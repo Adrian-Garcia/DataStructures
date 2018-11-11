@@ -1,0 +1,140 @@
+Árboles Binarios de Búsqueda (BST)
+	
+	¿Qué es un arbol?
+		Una estructura de datos Jerárquica
+		La relacion de los elementos es de uno a muchos
+
+	Terminología
+		Nodo 			Cada Elemento de un Árbol
+		Nodo Raíz 		Primer elemento agregado al Árbol	
+		Nodo Padre 		Nodo predecesor de un elemento
+		Nodo Hijo 		Es el nodo sucesor de un elemento
+		Hermanos 		Nodos que tienen el mismo padre
+		Nodo Hoja 		Nodo sin hijos
+		Subárbol 		Todos los nodos descendientes por la izquierda o derecha de un nodo
+
+	Alturas y niveles
+		Altura 			Cantidad de niveles que tiene un árbol. Al igual que en progrmación, el primer nivel es 0.
+
+	Árbol binario de Búsqueda
+		Reglas a cumplr
+			Cada nodo debe tener 0, 1 o 2 hijos
+			Los descendientes izquierdos deben tener un valor menor al padre
+			Los descendientes derechos deben tener un valor mayor al padre
+			No acepta repetidos
+
+		Ejemplos
+			
+			  	 		21
+				 /	  		  \
+				13 	   		  33
+			  /	   \ 		 /	\
+			5		18	   25 	 36
+				   / 			   \
+				15				    40
+
+
+		Codigo 					...Terminar...
+			Class NodeT {
+				private:
+					int data;
+					NodeT *left, *right
+				public:
+					NodeT();
+					NodeT(int d);	
+			}
+
+			NodeT() {
+				left = rigth = NULL;
+			}		
+
+			NodeT(int d) {
+
+			}
+
+
+			Clas BST {
+
+			}
+
+		Busqueda
+			Se empieza por la raiz y se compara. Si el numero es mayor que el que se busca, se va a la izquierda, si es menor, se va a la derecha. Si es igual se termina. Así sucesivamente hasta que se termina 
+
+		Proceso para agregar Nodos
+			Reglas
+				El valor a insertar no existe en el árbol
+				El nuevo nodo será un Nodo Hoja del Arobol
+
+			Terminar... 
+
+		Proceso para elminar un nodo
+			Nodo hoja
+				Buscar el nodo padre del nodo a borrar
+				Desconectarlo
+				Liberar el nodo
+		
+			Nodo con hijo
+				Buscar el Nodo Padre del nodo a Borrar
+				Conectar el hijo con el padre del nodo a Borrar
+				Liberar el nodo
+		
+			Nodo con dos hijos
+				Localizar el nodo predecesor o sicesor del nodo a borrar
+				Copiar la información
+				Eliminar el predecesor o sucesor según sea el caso
+
+		Predecesor
+			Uno a la izquierda y todo a la derecha
+
+		Sucesor
+			Uno a la derecha y todo a la izquierda
+
+		Recorrer Árboles binarios
+			Recorridos típicos
+				Preorden
+					Proceso
+						Visita el nodo Raíz del árbol
+						Recorre el preorden del subárbol izqueirdo del nodo raíz
+						Recorre el preorden el subárbol derecho del nodo raíz
+
+					Aplicación
+						Generar una réplica del arbol
+
+					Implementación
+						void BST::preorden(NodeT*r) {
+							if (r != NULL) {
+								cout << r->getData();
+								preorden(r->getLeft());
+								preorden(r->getRigth());
+							}
+						}	
+
+				Inorden 	terminar....
+					Proceso
+						Recorre en inorden el subarbol izquierdo
+						visita la reaiz del arbol
+						Recorre en inorden
+
+					Implementación
+						void BST::inorden (NodeT*r) {
+
+						}	
+
+				Postorden 	terminar...
+					Proceos
+						Recorre en postorden el subárbol izquierdo
+						Recorre en posrorden el subarbol derecho
+						Visista la raíz del árbol
+
+					Aplicación 
+						Libera los nodos de un arbol
+
+					Implementación		
+
+			Otros
+				Recorridos Nivel por Nivel 				terminar... 
+					Proceos
+						Meter el nodo raíz a una Fila
+						Mientras la fila no e vaíe:
+							Sacar un Nodo de la Fila y procesarlo
+							Meter 

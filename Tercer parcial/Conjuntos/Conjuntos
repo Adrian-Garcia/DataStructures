@@ -1,0 +1,64 @@
+Conjuntos
+
+	¿Qué es un onjunto
+		Grupo de datos SIN RELACIONES entre si
+		Lo importante es la pertenencia o no de un elemento al conjunto
+
+	¿Qué guarda?
+		-Los elementos ADT no pueden ser de diferentes tipos
+		-El ADT Conjunto NO guarda elementos repetidos
+	
+	Aplicaciones
+		-Pertenencias
+		-Interseccion
+		-Union
+		-Diferencia
+
+	Representación
+		Generalmente se usa una tabla arregl de objetos
+
+	Hashing
+		-Dispersa aleatoriamente los elementos que se insertan en la tabla
+		-Se preocupa por ser una buena fincion para distribuir a los elementos lo mas aleatoriamente posible en la tabla
+		-Aplica una estrategia para controlar las coliciones
+
+	Propiedades
+		Ejecución Rápida (conversiones sencillas)
+		Distribución Uniforme en todas las posiciones de la tabla	
+
+	Como diseñar?
+		Depende directamente de las caracteristicas de las llaves a considerar y de la tabla sobre la que se trabajará (tamaño)
+		Aun no existe ninguna metodología "perfecta" o considerada como la "mejor"
+
+	Consideraciones especiales de las metodologías
+		Los metodos para diseñar funciones de 	
+			terminar...
+
+		Selección de dígitos
+			Esta técnica cocnsiste en seleccionar algunos de los dígitos que fonroman la llave u con ellos generar el indice de la tabla. 
+
+		Residual
+			Usar como indice, el residuo de dividir la llave entre el tamaño de la tabla
+
+		Cuadratica
+			Eleva al cuadrado el valor de la llave y del resultado tomar los digitos centrales (ya que son los mas involucrados en el proceso)	
+
+		Folding
+			Agrupar algunos de los dígitos de la llava y aplicarles alguna(s) operacion matematica para generar un indice
+
+	Estrategias para el manejo de colisiones
+		Se dividen en dos grupos dependiendo de como y donde acomodan al elemento colisionado
+			Metodos de dirección abierta
+				-El elemento colisionado es reacomodado dentro del espacio de la tabla
+				-Todos los metodos de esta categoría consideran que la tabla es un espacio circular y su funcionamiento se basa en el indice original generado 
+				 por la funcion de Hashing (dirección base)
+
+				Principales metodos 
+					Prueba lineal
+						-Cuando colisiona, busca en forma secuencial una posicion disponible, a partir de la dirección base del elemento
+						-Sencilla pero ineficiente
+
+					terminar...
+
+			Metodos de encadenamiento	
+				

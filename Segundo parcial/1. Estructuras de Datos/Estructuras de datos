@@ -1,0 +1,32 @@
+Estructuras de datos
+
+	Stack
+		Una pila en la que lo ultimo que entra es el primero que sale.
+		Esta en todas los lenguajes esta disponible. Guarda un stack de todas las funciones
+
+		Operaciones
+			void pop()			Saca el dato 	 
+			void push(dato) 	Mete el dato
+			dato top() 			Dato de arriba
+			bool empty() 		Revisa si eta vacio
+	 		int size() 			Regresa el tamanio
+
+	Queue
+		Una fila en la que el primero que entra es el primero que sale
+
+		Operaciones
+			void pop()			Saca el dato 	 
+			void push(dato) 	Mete el dato
+			dato front() 		Dato del frente
+			bool empty() 		Revisa si eta vacio
+	 		int size() 			Regresa el tamanio 		
+
+	Prioriry Queue
+		Marca prioridades. Por default, C++ tiene la propridad mayor
+
+		 Operaciones
+		 	void pop()			Saca el dato 	 
+			void push(dato) 	Mete el dato
+			dato top() 			Dato de arriba
+			bool empty() 		Revisa si eta vacio
+	 		int size() 			Regresa el tamanio

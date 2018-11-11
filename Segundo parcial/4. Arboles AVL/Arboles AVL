@@ -1,0 +1,14 @@
+Arboles AVL	
+	
+	Caracteristicas
+		Mejora de los arboles Binarios
+		Estan balanceados
+
+	Factor de Balanceo
+		Altura del subarbol derecho - Altura del subarbol izquierdo
+
+	Agregar un nodo al arbol
+		1. El nodo se agrega siguiendo las reglas de inserción de un Árbol Binario de Busqueda
+		2. Terminar....
+
+		

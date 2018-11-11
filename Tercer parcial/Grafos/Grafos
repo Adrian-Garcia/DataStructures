@@ -1,0 +1,130 @@
+Grafos
+	
+	Definición
+		Una estructura de Datos para representar múltiples relaciones
+		Es una estructura de datos de tipo red. 
+		Es la mas generar que existe
+		Tiene relacion de "muchos a muchos"
+
+	Terminología
+		Grafo 						Conjunto de nodos y Arcos (también llamdos Vértices y Aristas)
+		Nodo 						Elemento básico de Información
+		Arco 						Liga que une dos nodos de un grafo (Relacion entre elementos)
+		Subgrafo					Pequeña parte del grafo completo
+		Nodos Adyacente 			Conexión con arco que lo conecta
+		Vecino de un Nodo 			Todos los nodos que son dayacentes a un nodo
+		Camino o Trayectoria 		Secuencia de Nodos de tal forma que cada par de nodos son adyacentes
+		Trayectoria Simple			Camino donde todos los nodos contenidos son distintos
+		Grafo No-Dirigido			El arco funciona en ambas direcciones
+		Grafo Dirigido 				El arco solo funciona en una direccion (ida o regreso)
+		Grafo Ponderado 			Tienen asociados un valor (peso) Relacionado con costo, distancia
+		Ciclo 						Trayectora en la que el nodo de inicio y terminación son iguales
+
+	Ciclos
+		Ciclo Hamiltoniano
+			Aquel que sale de un punto y regresa al mismo punto y visita a todos los nodos una vez sin repetir
+
+		Ciclo Euleriano
+			Aquel que sale de un punto y regresa al mismo punto. Puede visitar varios nodos, pero solamente recorre una vez cada arco
+			Se repiten los nodos, no los arcos. 
+
+	Operaciones tipicas de un Grafo
+		Insertar Nodo
+		Insertar Arco
+		Borrar Nodo
+		Borrar Arco
+		Buscar Nodo
+		Recorrer Grafo
+
+	Aplicaciones
+		Mapas 										Google maps, Wazee, Uber, etc. 
+		Automatas o Diagramas de estado 			Para ubicar en compiladores for (var, condicion, incremento)
+
+	Representación
+		Matriz de Adyacencias
+			La mas sencilla.
+			Con un grafo con N nodo, con una matriz de NxN. Que especifica que si se tiene relación de un renglon a otro
+
+			Representación
+				X 1 2 3 4 
+				1 T F F F
+				2 F T F F
+				3 F F T F
+				4 F F F T
+
+			No dirigido 		Matriz simetrica
+			Dirigido 			Matriz asimetrica
+
+
+			Ventajas 
+				Operaciones sencillas de implementar
+
+			Desventajas 
+				Se requiere conocer con anticipacion la cantidad de elementos que formarán al grafo	
+
+		Lista de Adyacencias
+			Se tiene una lista de los nodos y para cada nodo se tiene una lista de con quien se tiene dayacencia
+
+			Representación
+			  	A | B C E
+			  	B | A D
+			  	C | A D
+			  	D | B C E
+				E | A D
+
+			Ventaja
+				No se necesita conocer con anterioridad la cantidad de nodos ni arcos
+
+			Desventaja
+				Se duplica la información	
+				
+		Lista de Arcos	
+			Es mas complejo de implementar
+			Cada nodo tiene 
+				Apuntador al siguiente arco donde es origen
+				Apuntador al siguiente arco donde es destino
+				Nodo vertice 
+
+			Representación
+				A | A-B A-C 
+				B | B-C 
+				C |
+				D | D-A D-B D-C
+
+			Ventajas
+				Es representacion muy eficiente
+
+			Desventajas
+				Es bastante compleja de implenetar
+				Requiere de mas espacio en memoria	
+
+	Recorridos de Grafos
+		Breadth First (Primero en Anchura)
+			
+			Descripción
+				A partir de un Nodo de inicio este algoritmo visita un nodo y luego a todos sus vecinos
+				El orden en el que visita a los vecinos depende del orden de almacenamiento, segun la representacion ue se este usando
+				Usas una FILA auxiliar
+				Para evitar ciclos infinitos, los nodos guardan un Status "Espera" y "Listo"
+
+			Funcionamiento
+				1. Todos los nodos en espera
+				2. Si el estatus del Nodo esta en "Espera"
+				3. Inserta nodo a la fila
+				4. Sacar top de la fila
+				5. Meter sus vecinos
+				6. Repetir
+
+		Depth First (Primero en Profundidad)
+
+			Descripcion
+				A partir de un Nodo de Inicio, este algoritmo "visita" el Nodo y luego viista recursivamente a todos sus Vecinos No procesados
+				El orden en el que visita a los vecinos depende del orden de almacenamiento, segun la representacion que se este usanod
+				Este algoritmo usa una Pila para no quedar recursivamente
+
+			Funcionamiento
+				1. Iniciar status de nodos en "Espera" para cada Nodo del grafo
+ 				2. Va al primer Nodo
+ 				3. Va al primer Vecino no procesado de ese nodo
+ 				4. Luego al Vecino no procesado de ese Nodo
+ 				5. Repetir hasta que no haya vecinos en el ulimo nodo

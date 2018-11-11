@@ -1,0 +1,224 @@
+Adrián García López
+A01351166
+
+	Queue (Colas)
+		Descripción
+			Estructura de datos caracterisada por ser una secuencia de elementos en la que la operacion de insercion se realiza por un extrema y la extraccion por el otro
+
+		Operaciones 
+			Insertar (Push)				Añade un elemento por une extremo de la cola
+
+				void insertarCola(Nodo *&frente, Nodo *&fin, int n) {
+				
+					//Creamos el nuevo Nodo 
+					Nodo *nuevoNodo = new Nodo();
+			
+					//Asignamos datos al nuevo nood
+					nuevoNodo -> dato = n;
+					nuevoNodo -> siguiente = NULL;
+
+					//Si la cola está vacía 
+					if(colaVacia(frente)) {
+						//El frente será el nuevo nodo asignado
+						frente = nuevoNodo;
+					}
+
+					//Si la cola no está vacía 
+					else {
+						// El final será este nuevo elemento
+						fin -> siguiente = nuevoNodo;
+					}
+
+					//Asignamos el fin al nuevo nodo
+					fin = nuevoNodo;
+				}				
+
+			Quitar 						Elimina o extrae un elemento por el extremo opuesto 
+
+				void suprimirCola(Nodo *&frente, Nodo *&fin, int &n) {
+	
+					//Igualamos el frente al dato que se nos asigno
+					n = frente->dato;
+
+					//Creamos un nodo auxiliar y lo asignamos a frente
+					Nodo *aux = frente;
+
+					//Si frente y fin son iguales, es por que es el final de la cola
+					if (frente == fin) {
+						//Así que borramos todo
+						frente = NULL;
+						fin = NULL;
+					}
+
+					//Si no es el final de la cola
+					else {
+						//Asignamos el frente al siguiente dato
+						frente = frente->siguiente;
+					}
+
+					//Borramos casilla de la cola
+					delete aux;
+				}
+
+			Vacia 						Revisa si la lista tiene datos	
+				bool colaVacia(Nodo *frente) {
+	
+					//Frente es igual a null? Verdadero o Falso 
+					return (frente == NULL)? true : false;
+				}
+
+	Stack (Pilas)
+
+		Descripción
+			Es una estructura de datos de entradas ordenadas tales que solo se pueden introducir y eliminar por une extremo llamado cima. LIFO
+
+		Operaciones	
+			Insertar (Push)
+				Aniade un elemento en la cima de la pila
+
+				void agregarPila(Nodo *&pila, int n) {
+					Nodo *nuevoNodo = new Nodo();
+					nuevoNodo->dato = n;
+					nuevoNodo->siguiente = pila;
+					pila = nuevoNodo;
+				}
+
+			Quitar(Pop)
+				Elimina o saca un elemento de la pila
+
+				void sacarPila(Nodo *&pila, int &n) {
+					Nodo *aux = pila;
+					n = aux->dato;
+					pila = aux->siguiente;
+					delete aux;
+				}
+
+	Priority_Queue
+
+		Descripción
+			Una lista enlazada consta de un numero de nodos con dos componentes (campos), un enlace al siguiente nodo de la lista y un valor, que puede ser de cualqueir tipo.			
+
+		Operaciones
+
+			Insertar 					Inserta un dato a la lista
+				
+
+				void insertarLista(Nodo *&lista, int n) {
+
+					//Agregamos nuevo nodo
+					Nodo *nuevoNodo = new Nodo();
+					nuevoNodo->dato = n;	//Al nuevo nodo le asignamos su dato
+
+					//Crear nodos auxiliares
+					Nodo *aux1 = lista;
+					Nodo *aux2;
+
+					//Recorremos todos los nodos que sean menores al dato dado
+					while ((aux1 != NULL) && (aux1->dato < n)) {
+						//Si no es el lugar del nodo, entonces vamos al siguiente nodo
+						aux2 = aux1;
+						aux1 = aux1->siguiente;
+					}
+
+					//Si es el primer nodo lo asignamos como primero
+					if (lista == aux1) {
+						lista = nuevoNodo;
+					}
+
+					//Si no, entonces solo lo asignamos en su lugar
+					else {
+						aux2->siguiente = nuevoNodo;
+					}
+
+					//Le damos la siguiente dirrecion al nodo
+					nuevoNodo -> siguiente = aux1;
+				}
+
+			Eliminar 					Elimina un dato de la lista
+
+				void eliminarNodo(Nodo *&lista, int n) {
+					
+					//Preguntar si la lista no esta vacia
+					if (lista != NULL) {
+						
+						Nodo *auxBorrar;	//Nodo que se va a borrar
+						Nodo *anterior;		//Nodo anterior
+
+						auxBorrar = lista;
+
+						//Recorrer la lista y buscar el dato
+						while ((auxBorrar != NULL) && (auxBorrar->dato != n)) {
+							anterior = auxBorrar;
+							auxBorrar = auxBorrar->siguiente;
+						}
+
+						//El primer elemento es el que vamos a eliminar
+						else if (anterior == NULL) {
+							lista = lista->siguiente;
+							delete auxBorrar;
+							cout << "Elemento " << n << " borrado satisfactoriamente" << endl;
+						}
+
+						//El elemento está en la lista pero no es el primer elemento
+						else {
+							anterior->siguiente = auxBorrar->siguiente;
+							delete auxBorrar;
+							cout << "Elemento " << n << " borrado satisfactoriamente" << endl;
+						}
+					}
+				}
+
+			Buscar 						Busca un dato de la lista
+
+				void buscarLista(Nodo *lista, int n) {
+					
+					//Asumimos que no se encuentra 
+					bool band = false;
+
+					//Nodo que representa al nodo en el que nos encontramos
+					Nodo *actual = new Nodo();
+					actual = lista;		//Le asignamos la variable de lista
+
+					//Mientras no sea el ultimo nodo y el dato no se encuentre segur buscando
+					while ((actual != NULL) && (actual->dato >= n)) {
+						//Si se encuentra el dato cambiamos el status de la bandera
+						if (actual->dato == n) {
+							band = true;
+						}
+						//Cambiamos actual al siguiente nodo
+						actual = actual->siguiente;
+					}
+
+					//Informamos al usuario si se encontró el elemento
+					if (band == true) {
+						cout << "Elemento " << n << " SI ha sido encontrado en lista" << endl;
+					}
+
+					//Informamos al usuario si no se encontró el elemento
+					else {
+						cout << "Elemento " << n << " NO ha sido encontrado en lista" << endl;
+					}
+				}	
+
+			Prioridad de Default 
+				Se refiere a quel orden que tomara la priority queue. En este caso, de menor a mayor. Para cambiarlo, dependerá del requerimiento del programador. En este caso, lo cambiaremos de mayor a menor (inversa)
+
+				void inversa(Nodo *lista) {
+
+					Nodo actual = lista;
+					Nodo prev = NULL;
+					Nodo curr = lista;
+
+					//Recorremos toda la lista		
+					while (actual != NULL){
+
+						lista->siguiente = prev;
+						prev = lista;
+						lista = curr;
+						curr = lista->siguiente;
+					}	
+
+					//La nueva cabeza es el nodo en el que nos encontramos
+					lista->siguiente = prev;
+					delete curr;
+				}
