@@ -1,2 +1,2 @@
 # DataStructures
-Activities, homeworks and projects of Data Structures subject
+Activities, homeworks and projects of Data Structures class
